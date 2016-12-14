@@ -1,0 +1,53 @@
+{% extends '@Front/layout.html.twig' %}
+
+{% block content %}
+    <h1>Jobs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Location</th>
+                <th>Position</th>
+                <th>Company</th>
+                <th>Description</th>
+                <th>Apply</th>
+                <th>Email</th>
+                <th>Url</th>
+                <th>Title</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for job in jobs %}
+            <tr>
+                <td><a href="{{ path('jobz_front_job_show', { 'id': job.id }) }}">{{ job.id }}</a></td>
+                <td>{{ job.location }}</td>
+                <td>{{ job.position }}</td>
+                <td>{{ job.company }}</td>
+                <td>{{ job.description }}</td>
+                <td>{{ job.apply }}</td>
+                <td>{{ job.email }}</td>
+                <td>{{ job.url }}</td>
+                <td>{{ job.title }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('jobz_front_job_show', { 'id': job.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('jobz_front_job_edit', { 'id': job.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('jobz_front_job_new') }}">Create a new job</a>
+        </li>
+    </ul>
+{% endblock %}

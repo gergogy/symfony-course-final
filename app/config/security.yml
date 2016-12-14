@@ -2,10 +2,31 @@
 # http://symfony.com/doc/current/security.html
 security:
 
+    encoders:
+        Jobz\FrontBundle\Entity\User:
+            algorithm: bcrypt
+            cost: 15
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
+        test_provider:
+            chain:
+                providers: [in_memory, user]
+        user:
+            entity:
+                class: FrontBundle:User
+                property: username
+
         in_memory:
-            memory: ~
+            memory:
+                users:
+                    user: { password: user, roles [ 'ROLE_USER' ] }
+                    admin: { password: admin, roles [ 'ROLE_ADMIN' ] }
+                    sadmin: { password: admin, roles [ 'ROLE_SUPER_ADMIN' ] }
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -14,7 +35,15 @@ security:
             security: false
 
         main:
+            pattern: ^/
             anonymous: ~
+            provider: test_provider
+
+            form_login:
+                login_path: jobz_front_security_login
+                check_path: jobz_front_security_logincheck
+            logout:
+                path: jobz_front_security_logout
             # activate different ways to authenticate
 
             # http_basic: ~
@@ -22,3 +51,9 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+
+    access_control:
+        - { path: '^/job', roles: ROlE_USER }
+        - { path: '^/admin/', roles: ROLE_SUPER_ADMIN }
+        - { path: '^/', roles: IS_AUTHENTICATED_ANONYMOUSLY }

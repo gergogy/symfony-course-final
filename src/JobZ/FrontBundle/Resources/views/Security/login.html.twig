@@ -1,0 +1,36 @@
+{% extends '@Front/layout.html.twig' %}
+
+{% block content %}
+<h1>
+    Login
+</h1>
+<form method="post" action="{{ path('jobz_front_security_login') }}" enctype="multipart/form-data">
+    <table id="job_form">
+        <tfoot>
+        <tr>
+            <td colspan="2">
+                <input value="Submit" type="submit">
+            </td>
+        </tr>
+        </tfoot>
+        <tbody>
+        <tr>
+            <th>
+                <label for="username">Username</label>
+            </th>
+            <td>
+                <input name="_username" id="username" type="text" value="{{ last_username }}">
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label for="password">Password</label>
+            </th>
+            <td>
+                <input name="_password" id="password" type="text">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+{% endblock %}

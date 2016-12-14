@@ -1,0 +1,60 @@
+{% extends '@Front/layout.html.twig' %}
+
+{% block content %}
+    <h1>Job</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ job.id }}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ job.location }}</td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ job.position }}</td>
+            </tr>
+            <tr>
+                <th>Company</th>
+                <td>{{ job.company }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ job.description }}</td>
+            </tr>
+            <tr>
+                <th>Apply</th>
+                <td>{{ job.apply }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ job.email }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ job.url }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ job.title }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('jobz_front_frontcontroller_home') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('jobz_front_job_edit', { 'id': job.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

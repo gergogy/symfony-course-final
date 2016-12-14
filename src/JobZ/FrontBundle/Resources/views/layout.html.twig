@@ -1,0 +1,74 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div id="container">
+    <div id="header">
+        <div class="nav">
+            <ul>
+                <li><a href="{{ path('jobz_front_security_login') }}">Login</a></li>
+                <li><a href="{{ path('jobz_front_security_register') }}">Registration</a></li>
+            </ul>
+        </div>
+        <div class="nav-menu">
+            <ul>
+                <li><a href="{{ path('jobz_front_frontcontroller_information') }}">About us</a></li>
+                <li><a href="{{ path('jobz_front_job_new') }}">Posting a job</a></li>
+                <li><a href="{{ path('jobz_front_security_register') }}">Became a member</a></li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+        <div class="content">
+            <h1>
+                <a href="{{ path('jobz_front_frontcontroller_home') }}"><img src="{{ asset('bundles/front/images/jobz.gif') }}"></a>
+            </h1>
+            <div id="sub_header">
+                <div class="post">
+                    <h2>
+                        Ask for people
+                    </h2>
+                    <div>
+                        <a href="{{ path('jobz_front_job_new') }}">Post a Job</a>
+                    </div>
+                </div>
+                <div class="search">
+                    <img src="{{ asset('bundles/front/images/ask.png') }}" alt="ask">
+                    <h2>
+                        Ask for a job
+                    </h2>
+                    <form action="" method="get">
+                        <input name="keywords" id="search_keywords" class="input" type="text"><input value="search" src="{{ asset('bundles/front/images/search.png') }}" class="but_search" type="image">
+                        <div class="help">
+                            Enter some keywords (city, country, position, ...)
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    <div id="footer">
+        <div class="content">
+            {% block footer %}
+                <ul>
+                    <li>
+                        <a href="{{ path('jobz_front_frontcontroller_information') }}">About us</a>
+                    </li>
+                    <li class="feed">
+                        <a href="{{ path('jobz_front_frontcontroller_information') }}">Contact</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('jobz_front_frontcontroller_information') }}">JobZ API</a>
+                    </li>
+                    <li class="last">
+                        <a href="{{ path('jobz_front_frontcontroller_information') }}">Affiliates</a>
+                    </li>
+                </ul>
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}

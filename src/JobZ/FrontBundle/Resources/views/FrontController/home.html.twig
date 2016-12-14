@@ -1,0 +1,7 @@
+{% extends "@Front/layout.html.twig" %}
+
+{% block title %}Recent jobs{% endblock %}
+
+{% block content %}
+    {{ include('@Front/FrontController/_category.html.twig', { jobs: jobs }) }}
+{% endblock %}

@@ -1,0 +1,26 @@
+<div id="jobs">
+    {% for cname, cjobs in jobs %}
+        <div class="category_{{ cname|lower }}">
+            <div class="category">
+                <h1><a href="#">{{ cname }}</a></h1>
+            </div>
+        </div>
+        <table class="jobs">
+            <tbody>
+            {% for job in cjobs %}
+                <tr class="{% if loop.index % 2 == 0 %}even{% else %}odd{% endif %}">
+                    <td class="location">
+                        {{ job.location }}
+                    </td>
+                    <td class="position">
+                        <a href="#">{{ job.title }}</a>
+                    </td>
+                    <td class="company">
+                        {{ job.company }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+</div>
