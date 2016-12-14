@@ -3,12 +3,12 @@
 namespace JobZ\FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Class Timestampable
  * @package JobZ\FrontBundle\Entity
  *
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\MappedSuperclass()
  */
 abstract class Timestampable
@@ -16,7 +16,6 @@ abstract class Timestampable
     /**
      * @var \DateTime
      *
-     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
@@ -24,7 +23,6 @@ abstract class Timestampable
     /**
      * @var \DateTime
      *
-     * @Gedmo\Timestampable(on="update")
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
@@ -56,5 +54,21 @@ abstract class Timestampable
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function onCreate()
+    {
+        $this->setCreatedAt(new \DateTime());
+    }
+
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function onUpdate()
+    {
+        $this->setUpdatedAt(new \DateTime());
     }
 }

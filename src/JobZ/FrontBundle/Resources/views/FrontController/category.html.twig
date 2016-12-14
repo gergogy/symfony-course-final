@@ -1,7 +1,20 @@
-{% extends "::base.html.twig" %}
+{% extends "@Front/layout.html.twig" %}
 
-{% block title %}FrontBundle:FrontController:category{% endblock %}
-
-{% block body %}
-<h1>Welcome to the FrontController:category page</h1>
+{% block content %}
+    <div id="jobs">
+        <div class="category_{{ category.name }}">
+            <div class="category">
+                <h1>
+                    <a href="{{ path('jobz_front_frontcontroller_category', { id: category.id }) }}">{{ category.name|capitalize }}</a>
+                </h1>
+            </div>
+            <table class="jobs">
+                <tbody>
+                {% for job in jobs %}
+                    {{ include('@Front/FrontController/_job.html.twig', { job: job }) }}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

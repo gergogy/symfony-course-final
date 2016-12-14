@@ -38,9 +38,15 @@ class User implements UserInterface, \Serializable
      */
     private $isActive;
 
+    /**
+     * @ORM\Column()
+     */
+    private $role;
+
     public function __construct()
     {
         $this->isActive = true;
+        $this->role = 'ROLE_USER';
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid(null, true));
     }
@@ -64,7 +70,7 @@ class User implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return array($this->role);
     }
 
     public function eraseCredentials()
@@ -175,5 +181,29 @@ class User implements UserInterface, \Serializable
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     * Set role
+     *
+     * @param string $role
+     *
+     * @return User
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->role;
     }
 }

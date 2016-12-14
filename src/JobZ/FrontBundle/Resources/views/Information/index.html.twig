@@ -1,0 +1,41 @@
+{% extends '@Front/layout.html.twig' %}
+
+{% block content %}
+    <h1>Information list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for information in information %}
+            <tr>
+                <td><a href="{{ path('jobz_front_information_show', { 'id': information.id }) }}">{{ information.id }}</a></td>
+                <td>{{ information.title }}</td>
+                <td>{{ information.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('jobz_front_information_show', { 'id': information.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('jobz_front_information_edit', { 'id': information.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('jobz_front_information_new') }}">Create a new information</a>
+        </li>
+    </ul>
+{% endblock %}

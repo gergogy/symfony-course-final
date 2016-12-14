@@ -1,7 +1,7 @@
 {% extends '@Front/layout.html.twig' %}
 
 {% block content %}
-    <h1>Job edit</h1>
+    <h1>Menu edit</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
@@ -10,7 +10,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('jobz_job') }}">Back to the list</a>
+            <a href="{{ path('jobz_front_menu_index') }}">Back to the list</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

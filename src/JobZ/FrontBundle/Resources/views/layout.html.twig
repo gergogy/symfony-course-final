@@ -5,16 +5,29 @@
     <div id="header">
         <div class="nav">
             <ul>
-                <li><a href="{{ path('jobz_front_security_login') }}">Login</a></li>
-                <li><a href="{{ path('jobz_front_security_register') }}">Registration</a></li>
+                {% if not app.user %}
+                    <li><a href="{{ path('jobz_front_security_login') }}">Login</a></li>
+                    <li><a href="{{ path('jobz_front_security_register') }}">Registration</a></li>
+                {% else %}
+                    <li><a href="{{ path('jobz_front_security_logout') }}">Logout</a></li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('jobz_front_jobadmin_index') }}">JOBS</a></li>
+                        <li><a href="{{ path('jobz_front_category_index') }}">CATEGORIES</a></li>
+                        <li><a href="{{ path('jobz_front_information_index') }}">INFORMATIONS</a></li>
+                        <li><a href="{{ path('jobz_front_menu_index') }}">MENUS</a></li>
+                    {% endif %}
+                {% endif %}
             </ul>
         </div>
         <div class="nav-menu">
-            <ul>
-                <li><a href="{{ path('jobz_front_frontcontroller_information') }}">About us</a></li>
-                <li><a href="{{ path('jobz_front_job_new') }}">Posting a job</a></li>
-                <li><a href="{{ path('jobz_front_security_register') }}">Became a member</a></li>
-            </ul>
+            {% set menus = get_menus() %}
+            {% if menus|length %}
+                <ul>
+                    {% for menu in menus %}
+                        <li><a href="{{ path(menu.route) }}">{{ menu.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </div>
         <div class="clearfix"></div>
         <div class="content">
@@ -52,22 +65,14 @@
     </div>
     <div id="footer">
         <div class="content">
-            {% block footer %}
+            {% set infos = get_informations() %}
+            {% if infos|length %}
                 <ul>
-                    <li>
-                        <a href="{{ path('jobz_front_frontcontroller_information') }}">About us</a>
-                    </li>
-                    <li class="feed">
-                        <a href="{{ path('jobz_front_frontcontroller_information') }}">Contact</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('jobz_front_frontcontroller_information') }}">JobZ API</a>
-                    </li>
-                    <li class="last">
-                        <a href="{{ path('jobz_front_frontcontroller_information') }}">Affiliates</a>
-                    </li>
+                    {% for info in infos %}
+                        <li{% if loop.index == infos|length %} class="last"{% endif %}><a href="{{ path('jobz_front_frontcontroller_information', { slug: info.slug }) }}">{{ info.title }}</a></li>
+                    {% endfor %}
                 </ul>
-            {% endblock %}
+            {% endif %}
         </div>
     </div>
 </div>

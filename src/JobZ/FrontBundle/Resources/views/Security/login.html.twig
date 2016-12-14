@@ -4,7 +4,7 @@
 <h1>
     Login
 </h1>
-<form method="post" action="{{ path('jobz_front_security_login') }}" enctype="multipart/form-data">
+<form method="post" action="{{ path('jobz_front_security_logincheck') }}">
     <table id="job_form">
         <tfoot>
         <tr>
@@ -27,7 +27,7 @@
                 <label for="password">Password</label>
             </th>
             <td>
-                <input name="_password" id="password" type="text">
+                <input name="_password" id="password" type="password">
             </td>
         </tr>
         </tbody>

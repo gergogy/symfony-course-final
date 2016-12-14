@@ -3,5 +3,8 @@
 {% block title %}Recent jobs{% endblock %}
 
 {% block content %}
+    {% if keyword is defined %}
+        <h1>Result for {{ keyword }}</h1>
+    {% endif %}
     {{ include('@Front/FrontController/_category.html.twig', { jobs: jobs }) }}
 {% endblock %}

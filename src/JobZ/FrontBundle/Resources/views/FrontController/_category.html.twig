@@ -1,8 +1,10 @@
 <div id="jobs">
     {% for cname, cjobs in jobs %}
-        <div class="category_{{ cname|lower }}">
+        {% if cjobs|length %}
+            {% set category = cjobs[0].category.id %}
+        <div class="category_{{ cname|lower|replace(' ', '_') }}">
             <div class="category">
-                <h1><a href="#">{{ cname }}</a></h1>
+                <h1><a href="{{ path('jobz_front_frontcontroller_category', { id: category }) }}">{{ cname }}</a></h1>
             </div>
         </div>
         <table class="jobs">
@@ -12,5 +14,6 @@
             {% endfor %}
             </tbody>
         </table>
+        {% endif %}
     {% endfor %}
 </div>

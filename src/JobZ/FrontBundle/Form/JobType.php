@@ -24,9 +24,9 @@ class JobType extends AbstractType
             ->add('title', TextType::class, array('label' => 'Title'))
             ->add('type', ChoiceType::class, array(
                 'choices'  => array(
-                    'Full-time' => 'full-time',
-                    'Part-time' => 'part-time',
-                    'Freelance' => 'freelance',
+                    'Full-time',
+                    'Part-time',
+                    'Freelance',
                 ),
             ))
             ->add('location', TextType::class, array('label' => 'Location'))
@@ -34,8 +34,7 @@ class JobType extends AbstractType
             ->add('company', TextType::class, array('label' => 'Company'))
             ->add('description', TextareaType::class)
             ->add('apply', TextareaType::class)
-            ->add('email', EmailType::class, array('label' => 'E-mail'))
-            ->add('url', UrlType::class)
+            ->add('url', UrlType::class, array('required' => false))
             ->add('category', EntityType::class, array(
                 'label' => 'Category',
                 'class' => Category::class,

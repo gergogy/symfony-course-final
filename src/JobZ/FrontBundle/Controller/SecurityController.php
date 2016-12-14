@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: blush
- * Date: 2016. 12. 14.
- * Time: 15:11
- */
 
 namespace JobZ\FrontBundle\Controller;
-
 
 use JobZ\FrontBundle\Entity\User;
 use JobZ\FrontBundle\Form\UserType;
@@ -17,6 +10,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Security;
 
+/**
+ * Class SecurityController
+ * @package JobZ\FrontBundle\Controller
+ */
 class SecurityController extends Controller
 {
     /**

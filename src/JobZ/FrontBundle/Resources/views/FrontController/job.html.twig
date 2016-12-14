@@ -1,0 +1,29 @@
+{% extends '@Front/layout.html.twig' %}
+
+{% block content %}
+    <div id="job">
+        <h1>
+            {{ job.title }}
+        </h1>
+        <h2>
+            {{ job.location }}
+        </h2>
+        <h3>
+            {{ job.position }} <small>- {{ job.type|capitalize }}</small>
+        </h3>
+        <div class="description">
+            {{ job.description|nl2br }}
+        </div>
+        <h4>
+            How to apply?
+        </h4>
+        <p class="how_to_apply">
+            {{ job.apply|nl2br }}
+            <br>
+            <strong>Send your resume to {{ job.email }}</strong>
+        </p>
+        <div class="meta">
+            <small>posted on {{ job.createdAt|date('m/d/Y') }}</small>
+        </div>
+    </div>
+{% endblock %}

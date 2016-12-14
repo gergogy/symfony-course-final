@@ -5,13 +5,9 @@
 {% endblock %}
 
 {% block content %}
-    <h2 class="heading">Information Title</h2>
+    <h2 class="heading">{{ info.title }}</h2>
     <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac eros non nisl tempus euismod sed vitae odio. Integer egestas lectus in massa placerat scelerisque. Vivamus tempus sem eget sem tincidunt efficitur. Fusce bibendum tellus aliquet turpis porta, non consectetur nunc luctus. Fusce neque quam, pulvinar eget dignissim eu, tempor non orci. Vivamus vitae nunc id elit sollicitudin finibus imperdiet vitae mauris. Suspendisse potenti. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-
-        Ut hendrerit rutrum porttitor. Nulla facilisi. Fusce vitae magna neque. Proin in posuere purus. Proin euismod ex placerat lorem viverra, quis maximus est imperdiet. Phasellus ultricies leo eu erat pretium auctor. Vestibulum lorem eros, auctor in nisl quis, porttitor pellentesque tortor. Phasellus a ex non ipsum ornare efficitur id non massa. Nunc lacus odio, facilisis ut tempor in, fringilla nec nibh.
-
-        Nullam mi mauris, molestie et elementum a, sagittis eget neque. Sed vitae lectus ullamcorper, venenatis velit ut, volutpat libero. Nulla cursus quis est vitae facilisis. Donec viverra ac tortor ac mollis. Sed eget dictum justo, nec porta est. Fusce tincidunt, lacus vel accumsan vehicula, metus neque pulvinar erat, a rhoncus leo dolor eget odio. Vestibulum eget dui sed odio malesuada condimentum id a turpis. Cras cursus, quam nec convallis vulputate, lectus nulla volutpat nibh, vitae pharetra enim magna quis neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+        {{ info.description }}
     </p>
 {% endblock %}
 
