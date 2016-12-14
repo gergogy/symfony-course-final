@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,7 +21,7 @@ class JobType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
+            ->add('title', TextType::class, array('label' => 'Title'))
             ->add('type', ChoiceType::class, array(
                 'choices'  => array(
                     'Full-time' => 'full-time',
@@ -28,12 +29,12 @@ class JobType extends AbstractType
                     'Freelance' => 'freelance',
                 ),
             ))
-            ->add('location')
-            ->add('position')
-            ->add('company')
+            ->add('location', TextType::class, array('label' => 'Location'))
+            ->add('position', TextType::class, array('label' => 'Position'))
+            ->add('company', TextType::class, array('label' => 'Company'))
             ->add('description', TextareaType::class)
             ->add('apply', TextareaType::class)
-            ->add('email')
+            ->add('email', EmailType::class, array('label' => 'E-mail'))
             ->add('url', UrlType::class)
             ->add('category', EntityType::class, array(
                 'label' => 'Category',

@@ -20,6 +20,7 @@ abstract class Timestampable
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
+
     /**
      * @var \DateTime
      *
@@ -27,6 +28,7 @@ abstract class Timestampable
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
+
     /**
      * @return \DateTime
      */

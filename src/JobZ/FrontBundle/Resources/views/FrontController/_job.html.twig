@@ -1,0 +1,11 @@
+<tr class="{% if loop.index % 2 == 0 %}even{% else %}odd{% endif %}">
+    <td class="location">
+        {{ job.location }}
+    </td>
+    <td class="position">
+        <a href="{{ path('jobz_front_job_show', { id: job.id }) }}">{{ job.title }}</a>
+    </td>
+    <td class="company">
+        {{ job.company }}
+    </td>
+</tr>

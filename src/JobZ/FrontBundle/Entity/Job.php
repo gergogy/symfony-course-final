@@ -3,6 +3,7 @@
 namespace JobZ\FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Job
@@ -87,7 +88,7 @@ class Job extends Timestampable
     /**
      * @var Category
      *
-     * @ORM\ManyToOne(targetEntity="JobZ\FrontBundle\Entity\Job")
+     * @ORM\ManyToOne(targetEntity="JobZ\FrontBundle\Entity\Category")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
@@ -95,7 +96,7 @@ class Job extends Timestampable
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -106,6 +107,7 @@ class Job extends Timestampable
      * Set location
      *
      * @param string $location
+     *
      * @return Job
      */
     public function setLocation($location)
@@ -118,7 +120,7 @@ class Job extends Timestampable
     /**
      * Get location
      *
-     * @return string 
+     * @return string
      */
     public function getLocation()
     {
@@ -129,6 +131,7 @@ class Job extends Timestampable
      * Set position
      *
      * @param string $position
+     *
      * @return Job
      */
     public function setPosition($position)
@@ -141,7 +144,7 @@ class Job extends Timestampable
     /**
      * Get position
      *
-     * @return string 
+     * @return string
      */
     public function getPosition()
     {
@@ -152,6 +155,7 @@ class Job extends Timestampable
      * Set company
      *
      * @param string $company
+     *
      * @return Job
      */
     public function setCompany($company)
@@ -164,7 +168,7 @@ class Job extends Timestampable
     /**
      * Get company
      *
-     * @return string 
+     * @return string
      */
     public function getCompany()
     {
@@ -175,6 +179,7 @@ class Job extends Timestampable
      * Set description
      *
      * @param string $description
+     *
      * @return Job
      */
     public function setDescription($description)
@@ -187,7 +192,7 @@ class Job extends Timestampable
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -198,6 +203,7 @@ class Job extends Timestampable
      * Set apply
      *
      * @param string $apply
+     *
      * @return Job
      */
     public function setApply($apply)
@@ -210,7 +216,7 @@ class Job extends Timestampable
     /**
      * Get apply
      *
-     * @return string 
+     * @return string
      */
     public function getApply()
     {
@@ -221,6 +227,7 @@ class Job extends Timestampable
      * Set email
      *
      * @param string $email
+     *
      * @return Job
      */
     public function setEmail($email)
@@ -233,7 +240,7 @@ class Job extends Timestampable
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -244,6 +251,7 @@ class Job extends Timestampable
      * Set url
      *
      * @param string $url
+     *
      * @return Job
      */
     public function setUrl($url)
@@ -256,7 +264,7 @@ class Job extends Timestampable
     /**
      * Get url
      *
-     * @return string 
+     * @return string
      */
     public function getUrl()
     {
@@ -267,6 +275,7 @@ class Job extends Timestampable
      * Set title
      *
      * @param string $title
+     *
      * @return Job
      */
     public function setTitle($title)
@@ -279,35 +288,11 @@ class Job extends Timestampable
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set category
-     *
-     * @param \JobZ\FrontBundle\Entity\Job $category
-     *
-     * @return Job
-     */
-    public function setCategory(\JobZ\FrontBundle\Entity\Job $category = null)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return \JobZ\FrontBundle\Entity\Job
-     */
-    public function getCategory()
-    {
-        return $this->category;
     }
 
     /**
@@ -332,5 +317,29 @@ class Job extends Timestampable
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set category
+     *
+     * @param Category $category
+     *
+     * @return Job
+     */
+    public function setCategory(Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \JobZ\FrontBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

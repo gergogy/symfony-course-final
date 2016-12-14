@@ -8,17 +8,7 @@
         <table class="jobs">
             <tbody>
             {% for job in cjobs %}
-                <tr class="{% if loop.index % 2 == 0 %}even{% else %}odd{% endif %}">
-                    <td class="location">
-                        {{ job.location }}
-                    </td>
-                    <td class="position">
-                        <a href="#">{{ job.title }}</a>
-                    </td>
-                    <td class="company">
-                        {{ job.company }}
-                    </td>
-                </tr>
+                {{ include('@Front/FrontController/_job.html.twig', { job: job }) }}
             {% endfor %}
             </tbody>
         </table>

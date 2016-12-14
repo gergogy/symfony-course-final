@@ -3,6 +3,7 @@
 security:
 
     encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
         Jobz\FrontBundle\Entity\User:
             algorithm: bcrypt
             cost: 15
@@ -44,16 +45,9 @@ security:
                 check_path: jobz_front_security_logincheck
             logout:
                 path: jobz_front_security_logout
-            # activate different ways to authenticate
-
-            # http_basic: ~
-            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
 
 
     access_control:
-        - { path: '^/job', roles: ROlE_USER }
-        - { path: '^/admin/', roles: ROLE_SUPER_ADMIN }
+    #    - { path: '^/job', roles: ROlE_USER }
+        #- { path: '^/admin/', roles: ROLE_SUPER_ADMIN }
         - { path: '^/', roles: IS_AUTHENTICATED_ANONYMOUSLY }

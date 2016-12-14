@@ -3,6 +3,7 @@
 namespace JobZ\FrontBundle\Controller;
 
 use JobZ\FrontBundle\Entity\Job;
+use JobZ\FrontBundle\Form\JobType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -24,7 +25,7 @@ class JobController extends Controller
     public function newAction(Request $request)
     {
         $job = new Job();
-        $form = $this->createForm('JobZ\FrontBundle\Form\JobType', $job);
+        $form = $this->createForm(JobType::class, $job);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -66,7 +67,7 @@ class JobController extends Controller
     public function editAction(Request $request, Job $job)
     {
         $deleteForm = $this->createDeleteForm($job);
-        $editForm = $this->createForm('JobZ\FrontBundle\Form\JobType', $job);
+        $editForm = $this->createForm(JobType::class, $job);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
