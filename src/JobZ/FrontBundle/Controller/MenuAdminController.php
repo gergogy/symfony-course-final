@@ -12,7 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  *
  * @Route("admin/menu")
  */
-class MenuController extends Controller
+class MenuAdminController extends Controller
 {
     /**
      * Lists all menu entities.
@@ -48,7 +48,7 @@ class MenuController extends Controller
             $em->persist($menu);
             $em->flush($menu);
 
-            return $this->redirectToRoute('jobz_front_menu_show', array('id' => $menu->getId()));
+            return $this->redirectToRoute('jobz_front_menuadmin_show', array('id' => $menu->getId()));
         }
 
         return $this->render('@Front/Menu/new.html.twig', array(
@@ -88,7 +88,7 @@ class MenuController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('jobz_front_menu_edit', array('id' => $menu->getId()));
+            return $this->redirectToRoute('jobz_front_menuadmin_edit', array('id' => $menu->getId()));
         }
 
         return $this->render('@Front/Menu/edit.html.twig', array(
@@ -115,7 +115,7 @@ class MenuController extends Controller
             $em->flush($menu);
         }
 
-        return $this->redirectToRoute('jobz_front_menu_index');
+        return $this->redirectToRoute('jobz_front_menuadmin_index');
     }
 
     /**
@@ -128,7 +128,7 @@ class MenuController extends Controller
     private function createDeleteForm(Menu $menu)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('jobz_front_menu_delete', array('id' => $menu->getId())))
+            ->setAction($this->generateUrl('jobz_front_menuadmin_delete', array('id' => $menu->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

@@ -151,4 +151,22 @@ class JobController extends Controller
             ->getForm()
         ;
     }
+
+    /**
+     * @Route("/details/{id}")
+     */
+    public function detailsAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $job = $em->getRepository(Job::class)->findOneBy(
+            array(
+                'id' => (int)$id
+            )
+        );
+
+        return $this->render('@Front/FrontController/job.html.twig', array(
+            'job' => $job
+        ));
+
+    }
 }

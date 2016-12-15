@@ -4,7 +4,7 @@
             {% set category = cjobs[0].category.id %}
         <div class="category_{{ cname|lower|replace(' ', '_') }}">
             <div class="category">
-                <h1><a href="{{ path('jobz_front_frontcontroller_category', { id: category }) }}">{{ cname }}</a></h1>
+                <h1><a href="{{ path('jobz_front_category_details', { id: category }) }}">{{ cname }}</a></h1>
             </div>
         </div>
         <table class="jobs">

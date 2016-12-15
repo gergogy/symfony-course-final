@@ -37,6 +37,7 @@ security:
 
 
     access_control:
+        - { path: '^/job/details', roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: '^/job', roles: ROLE_USER }
         - { path: '^/admin/', roles: ROLE_ADMIN }
         - { path: '^/', roles: IS_AUTHENTICATED_ANONYMOUSLY }
